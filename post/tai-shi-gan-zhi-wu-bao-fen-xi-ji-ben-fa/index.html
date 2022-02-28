@@ -7,7 +7,7 @@
 <meta name="description" content="Keep Learning">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646049041599">
+<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646050249188">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -85,7 +85,17 @@
             <p class="article-meta">
               2022-02-28
               
+                <a href="https://github.com/HEXING19/docs.github.io/tag/OACgqZQQ8/" class="badge ">
+                  安全效果
+                </a>
+              
+                <a href="https://github.com/HEXING19/docs.github.io/tag/t5LZ5XbLp/" class="badge secondary">
+                  态势感知
+                </a>
+              
             </p>
+            
+              <img src="https://github.com/HEXING19/docs.github.io/post-images/tai-shi-gan-zhi-wu-bao-fen-xi-ji-ben-fa.jpg" alt="态势感知误报分析基本法">
             
             <div class="post-content">
               <p><strong>SIP误报研判方法</strong><br>
@@ -169,6 +179,48 @@ SQL注入常见误报为关键字误报，客户业务不规范在传输过程�
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646048992331.jpg" alt="" loading="lazy"></p>
 <p><strong>2.6.6 MySQL Sleep函数SQL注入攻击</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049028091.jpg" alt="" loading="lazy"></p>
+<p><strong>2.7 TLS加密异常</strong><br>
+**2.7.1 HTTPS恶意通信 **<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049702852.jpg" alt="" loading="lazy"><br>
+威胁情报查看网站是否恶意，若无法判断就需要看证书内容，以及攻击者IP相关行为</p>
+<p><strong>2.8 其他代码注入</strong><br>
+**2.8.1 空字节注入攻击 **<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049759933.gif" alt="" loading="lazy"><br>
+在乱码情况下 经常出现空字节，需要看HEX，其中有00</p>
+<p><strong>2.9 Java代码注入</strong><br>
+<strong>2.9.1 Java代码注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049835334.gif" alt="" loading="lazy"><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049842604.gif" alt="" loading="lazy"><br>
+请求体中出现了JAVA关键字，需要结合上下文判断，一般代码注入都会存在EXEC、runtime。部分客户业务会存在相应代码，需要结合日志中心进行关联分析。</p>
+<p><strong>2.10 下载恶意文件</strong><br>
+<strong>2.10.1 下载恶意文件</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049890142.gif" alt="" loading="lazy"><br>
+外到内，访问http://xxx/cmds.exe 且状态码0，没有响应，可以判断是误报</p>
+<p><strong>2.11 DRS命令执行</strong><br>
+<strong>2.11.1 伪造域控发起DCSync请求</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049940407.jpg" alt="" loading="lazy"><br>
+DCSync请求是域控之间的行为，  客户的域控服务器被定义成终端，才会生成告警。终端跟域控进行通信为不正常情况，需要确认资产。</p>
+<p><strong>3.如何利用在线检测网站协助分析安全事件</strong><br>
+常说的vt网站https://www.virustotal.com/gui/<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049994743.jpg" alt="" loading="lazy"><br>
+分为3大部分，文件、url跟搜索（hash值、域名、 IP地址、URL或者自己创建一个IOC情报）可以根据已经威胁信息按需使用<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050018353.png" alt="" loading="lazy"><br>
+建议优先使用search栏进行搜索，会更加全面，当态势感知报毒，在线平台检测正常时，善用图表跟RELATIONS功能，有些报毒很可能因为恶意软件<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050042946.png" alt="" loading="lazy"><br>
+比如该例子，可以在RELATIONS中找到该域名应该是绑定了恶意软件<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050066424.png" alt="" loading="lazy"><br>
+通过图表功能也可以很快找到<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050094676.jpg" alt="" loading="lazy"><br>
+微步在线（https://x.threatbook.cn）检测同理，微步在线支持IP地址、域名、url、邮箱、CVE、CNVD都在一个搜索框内检测<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050123750.jpg" alt="" loading="lazy"><br>
+其他在线检测网站<br>
+深信服（https://ti.sangfor.com.cn/analysis-platform）<br>
+友商（https://ti.qianxin.com/）<br>
+腾讯哈勃（https://habo.qq.com/）<br>
+公共dns服务记录查询（https://passivedns.mnemonic.no/）<br>
+在线数据包检测工具（https://packettotal.com/）</p>
+<p><strong>4.误报漏报协助判断准备信息</strong><br>
+需要提前收集事件详情，下载json字段，有数据包的情况下载数据包，事件IP上下文日志</p>
 
             </div>
           </article>
@@ -192,7 +244,7 @@ SQL注入常见误报为关键字误报，客户业务不规范在传输过程�
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646049041599" class="no-responsive avatar">
+    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646050249188" class="no-responsive avatar">
     <div class="text-muted">Keep Learning</div>
     <div class="social-container">
       
@@ -248,7 +300,15 @@ SQL注入常见误报为关键字误报，客户业务不规范在传输过程�
     </div>
     <div class="row">
       
-        <a href="https://github.com/HEXING19/docs.github.io/tag/6zQu5IwKx/" class="badge secondary">
+        <a href="https://github.com/HEXING19/docs.github.io/tag/OACgqZQQ8/" class="badge warning">
+          安全效果
+        </a>
+      
+        <a href="https://github.com/HEXING19/docs.github.io/tag/t5LZ5XbLp/" class="badge ">
+          态势感知
+        </a>
+      
+        <a href="https://github.com/HEXING19/docs.github.io/tag/6zQu5IwKx/" class="badge ">
           Gridea
         </a>
       
