@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Hello Gridea | Gridea</title>
+<title>态势感知误报分析基本法 | Gridea</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -81,46 +81,52 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>Hello Gridea</h1>
+            <h1>态势感知误报分析基本法</h1>
             <p class="article-meta">
-              2018-12-12
-              
-                <a href="https://github.com/HEXING19/docs.github.io/tag/6zQu5IwKx/" class="badge ">
-                  Gridea
-                </a>
+              2022-02-28
               
             </p>
             
-              <img src="https://github.com/HEXING19/docs.github.io/post-images/hello-gridea.png" alt="Hello Gridea">
-            
             <div class="post-content">
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...<br>
-xx</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+              <h1 id="sip误报研判方法">SIP误报研判方法</h1>
+<h2 id="方法总结">方法总结</h2>
+<p>根据SIP给出的威胁描述，寻找关键检出点，如SQL注入，查看请求中是否存在注入语句。部分不熟悉的攻击，可以在网上搜索此类攻击Payload作为参考（有些误报可以直接搜索出来是业务语句），结合请求中的上下文分析，客户正常业务通常有明显特征。<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646046211679.png" alt="" loading="lazy"><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646046240072.png" alt="" loading="lazy"></p>
+<h3 id="挖矿-病毒家族">挖矿、病毒家族</h3>
+<p>遇见挖矿、病毒家族，可以将IP/域名在微步,VT等威胁情报中查询确认（详见在线网站检测章节），会有部分网站未标记恶意，但是通信样本中存在恶意文件。</p>
+<h3 id="系统漏洞部分">系统漏洞部分</h3>
+<p>遇见漏洞，在没有具体举证，HEX特征不了解的情况下，采取关联分析，该IP是否还存在其他恶意行为。最后仍无法判断联系研发同事分析数据包。</p>
+<h3 id="web攻击利用">web攻击利用</h3>
+<p>web端攻击利用，大多数的web端攻击类型都能在网上搜索到相关利用代码，根据态势感知高亮标红部分搜索网上公开payload作为参考，综合上下文分析是不是为客户正常业务。</p>
+<h3 id="恶意文件软件类">恶意文件/软件类</h3>
+<p>恶意文件类，通常搜索MD5值，下载源文件进行查杀验证。</p>
+<h3 id="黑客工具类">黑客工具类</h3>
+<p>黑客工具类，常见为frp，cs，远控软件，根据检测特征字段结合上下文。<br>
+如cs工具，可根据以下纬度进行判断<br>
+（1）基于工具服务器默认特征的角度，符合cs服务器特征（默认证书，默认端口50000）<br>
+（2）针对3.13以前版本在搜索 &quot;HTTP/1.1 404 Not Found Date:&quot; +&quot;GMT Content-Type: text/plain Content-Length: 0&quot; -&quot;Connection:” ，基于其服务器的相应包的特点可以判断该服务器为cs，善用浏览器跟搜索引擎<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646046407726.png" alt="" loading="lazy"><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646046416122.png" alt="" loading="lazy"></p>
+<h3 id="其他类">其他类</h3>
+<p>根据命中的规则反向佐证是否为误报，规则中有原理跟处置建议。<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646046448411.png" alt="" loading="lazy"></p>
 
             </div>
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://github.com/HEXING19/docs.github.io/post/demo/">
+                <h3 class="post-title">
+                  demo
+                </h3>
+              </a>
+            </div>
           
         </div>
         
@@ -184,7 +190,7 @@ xx</p>
     </div>
     <div class="row">
       
-        <a href="https://github.com/HEXING19/docs.github.io/tag/6zQu5IwKx/" class="badge success">
+        <a href="https://github.com/HEXING19/docs.github.io/tag/6zQu5IwKx/" class="badge secondary">
           Gridea
         </a>
       
