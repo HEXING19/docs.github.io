@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" >
 
-<title>态势感知误报分析基本法 | Gridea</title>
-<meta name="description" content="温故而知新">
+<title>态势感知误报分析基本法 | Blog</title>
+<meta name="description" content="Keep Learning">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646046985601">
+<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646047929239">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -26,7 +26,7 @@
   
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
-    <h3><a href="https://github.com/HEXING19/docs.github.io">Gridea</a></h3>
+    <h3><a href="https://github.com/HEXING19/docs.github.io">Blog</a></h3>
   </div>
   <div class="collapsible">
     <input id="collapsible1" type="checkbox" name="collapsible1">
@@ -90,26 +90,52 @@
             <div class="post-content">
               <p><strong>SIP误报研判方法</strong><br>
 <strong>方法总结</strong><br>
-根据SIP给出的威胁描述，寻找关键检出点，如SQL注入，查看请求中是否存在注入语句。部分不熟悉的攻击，可以在网上搜索此类攻击Payload作为参考（有些误报可以直接搜索出来是业务语句），结合请求中的上下文分析，客户正常业务通常有明显特征。<br>
+ 根据SIP给出的威胁描述，寻找关键检出点，如SQL注入，查看请求中是否存在注入语句。部分不熟悉的攻击，可以在网上搜索此类攻击Payload作为参考（有些误报可以直接搜索出来是业务语句），结合请求中的上下文分析，客户正常业务通常有明显特征。<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046211679.png" alt="" loading="lazy"><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046240072.png" alt="" loading="lazy"><br>
 <strong>挖矿、病毒家族</strong><br>
-遇见挖矿、病毒家族，可以将IP/域名在微步,VT等威胁情报中查询确认（详见在线网站检测章节），会有部分网站未标记恶意，但是通信样本中存在恶意文件。</p>
+ 遇见挖矿、病毒家族，可以将IP/域名在微步,VT等威胁情报中查询确认（详见在线网站检测章节），会有部分网站未标记恶意，但是通信样本中存在恶意文件。</p>
 <p><strong>系统漏洞部分</strong><br>
-如遇见漏洞，在没有具体举证，HEX特征不了解的情况下，采取关联分析，该IP是否还存在其他恶意行为。最后仍无法判断联系研发同事分析数据包。</p>
+ 如遇见漏洞，在没有具体举证，HEX特征不了解的情况下，采取关联分析，该IP是否还存在其他恶意行为。最后仍无法判断联系研发同事分析数据包。</p>
 <p><strong>web攻击利用</strong><br>
-web端攻击利用，大多数的web端攻击类型都能在网上搜索到相关利用代码，根据态势感知高亮标红部分搜索网上公开payload作为参考，综合上下文分析是不是为客户正常业务。</p>
+ web端攻击利用，大多数的web端攻击类型都能在网上搜索到相关利用代码，根据态势感知高亮标红部分搜索网上公开payload作为参考，综合上下文分析是不是为客户正常业务。</p>
 <p><strong>恶意文件/软件类</strong><br>
-恶意文件类，通常搜索MD5值，下载源文件进行查杀验证。</p>
+ 恶意文件类，通常搜索MD5值，下载源文件进行查杀验证。</p>
 <p><strong>黑客工具类</strong><br>
-黑客工具类，常见为frp，cs，远控软件，根据检测特征字段结合上下文。如cs工具，可根据以下纬度进行判断<br>
+ 黑客工具类，常见为frp，cs，远控软件，根据检测特征字段结合上下文。如cs工具，可根据以下纬度进行判断<br>
 （1）基于工具服务器默认特征的角度，符合cs服务器特征（默认证书，默认端口50000）<br>
 （2）针对3.13以前版本在搜索 &quot;HTTP/1.1 404 Not Found Date:&quot; +&quot;GMT Content-Type: text/plain Content-Length: 0&quot; -&quot;Connection:” ，基于其服务器的相应包的特点可以判断该服务器为cs，善用浏览器跟搜索引擎<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046407726.png" alt="" loading="lazy"><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046416122.png" alt="" loading="lazy"></p>
 <p><strong>其他类</strong><br>
-根据命中的规则反向佐证是否为误报，规则中有原理跟处置建议。<br>
+ 根据命中的规则反向佐证是否为误报，规则中有原理跟处置建议。<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046448411.png" alt="" loading="lazy"></p>
+<p>#####告警分析<br>
+#######webshell访问<br>
+<strong>ASHX文件上传绕过</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646047622230.png" alt="" loading="lazy"><br>
+请求地址中存在类似绕过语句 a.ashx/b.png，响应体内容为微信跳转，且无上传数据。判断为误报。</p>
+<p><strong>IIS解析漏洞文件上传绕过</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646047682263.png" alt="" loading="lazy"><br>
+部分特征符合IIS解析漏洞文件上传，可以看到请求体中应该是多个图片文件同时上传，“；”作为分隔符。IIS解析漏洞特征“1.jpg;.asp”，因此出现误报。</p>
+<p><strong>系统命令注入</strong><br>
+研判思路：系统命令注入常见于客户自身业务误报，乱码误报，同时会命中一些关键字。<br>
+查看请求头是否有异常字符插入，请求体内容是否符合正常业务。存在一部分告警中有明确的关键字 如 whoami ping之类，需要判断此请求是否是日志文件。</p>
+<p><strong>通用系统命令注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646047739837.png" alt="" loading="lazy"><br>
+请求体与响应体中都是乱码，且请求URI中存在Servlet字样，初步判断是自身业务。可结合日志检索，查看是否有其他关联攻击。<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646047773550.png" alt="" loading="lazy"><br>
+请求头中存在System关键字，URI中显示有cardinfo，可以判断出一个业务信息查询，仅是关键字被检测到。<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646047791037.png" alt="" loading="lazy"><br>
+标红部分 存在&lt;&gt; .*?以及<code>，</code>可以执行命令,因此匹配上了<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646047818801.png" alt="" loading="lazy"><br>
+存在关键字SET 以及环境变量信息导致误判</p>
+<p><strong>ping命令注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646047876536.png" alt="" loading="lazy"><br>
+搜索未发现ping命令,且请求体内容为业务相关</p>
+<p><strong>whoami命令注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646047909269.png" alt="" loading="lazy"><br>
+搜索未发现whoami命令,且请求体内容为业务相关</p>
 
             </div>
           </article>
@@ -133,8 +159,8 @@ web端攻击利用，大多数的web端攻击类型都能在网上搜索到相�
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646046985601" class="no-responsive avatar">
-    <div class="text-muted">温故而知新</div>
+    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646047929239" class="no-responsive avatar">
+    <div class="text-muted">Keep Learning</div>
     <div class="social-container">
       
         
