@@ -7,7 +7,7 @@
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646046450610">
+<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646046696253">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -88,27 +88,27 @@
             </p>
             
             <div class="post-content">
-              <h1 id="sip误报研判方法">SIP误报研判方法</h1>
-<h2 id="方法总结">方法总结</h2>
+              <h3 id="sip误报研判方法">SIP误报研判方法</h3>
+<h4 id="方法总结">方法总结</h4>
 <p>根据SIP给出的威胁描述，寻找关键检出点，如SQL注入，查看请求中是否存在注入语句。部分不熟悉的攻击，可以在网上搜索此类攻击Payload作为参考（有些误报可以直接搜索出来是业务语句），结合请求中的上下文分析，客户正常业务通常有明显特征。<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046211679.png" alt="" loading="lazy"><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046240072.png" alt="" loading="lazy"></p>
-<h3 id="挖矿-病毒家族">挖矿、病毒家族</h3>
+<h5 id="挖矿-病毒家族">挖矿、病毒家族</h5>
 <p>遇见挖矿、病毒家族，可以将IP/域名在微步,VT等威胁情报中查询确认（详见在线网站检测章节），会有部分网站未标记恶意，但是通信样本中存在恶意文件。</p>
-<h3 id="系统漏洞部分">系统漏洞部分</h3>
+<h5 id="系统漏洞部分">系统漏洞部分</h5>
 <p>遇见漏洞，在没有具体举证，HEX特征不了解的情况下，采取关联分析，该IP是否还存在其他恶意行为。最后仍无法判断联系研发同事分析数据包。</p>
-<h3 id="web攻击利用">web攻击利用</h3>
+<h5 id="web攻击利用">web攻击利用</h5>
 <p>web端攻击利用，大多数的web端攻击类型都能在网上搜索到相关利用代码，根据态势感知高亮标红部分搜索网上公开payload作为参考，综合上下文分析是不是为客户正常业务。</p>
-<h3 id="恶意文件软件类">恶意文件/软件类</h3>
+<h5 id="恶意文件软件类">恶意文件/软件类</h5>
 <p>恶意文件类，通常搜索MD5值，下载源文件进行查杀验证。</p>
-<h3 id="黑客工具类">黑客工具类</h3>
+<h5 id="黑客工具类">黑客工具类</h5>
 <p>黑客工具类，常见为frp，cs，远控软件，根据检测特征字段结合上下文。<br>
 如cs工具，可根据以下纬度进行判断<br>
 （1）基于工具服务器默认特征的角度，符合cs服务器特征（默认证书，默认端口50000）<br>
 （2）针对3.13以前版本在搜索 &quot;HTTP/1.1 404 Not Found Date:&quot; +&quot;GMT Content-Type: text/plain Content-Length: 0&quot; -&quot;Connection:” ，基于其服务器的相应包的特点可以判断该服务器为cs，善用浏览器跟搜索引擎<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046407726.png" alt="" loading="lazy"><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046416122.png" alt="" loading="lazy"></p>
-<h3 id="其他类">其他类</h3>
+<h5 id="其他类">其他类</h5>
 <p>根据命中的规则反向佐证是否为误报，规则中有原理跟处置建议。<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046448411.png" alt="" loading="lazy"></p>
 
@@ -134,7 +134,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646046450610" class="no-responsive avatar">
+    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646046696253" class="no-responsive avatar">
     <div class="text-muted">温故而知新</div>
     <div class="social-container">
       
