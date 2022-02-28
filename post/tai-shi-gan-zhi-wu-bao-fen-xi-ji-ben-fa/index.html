@@ -7,7 +7,7 @@
 <meta name="description" content="Keep Learning">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646048251320">
+<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646049041599">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -110,8 +110,8 @@
 <p><strong>其他类</strong><br>
  根据命中的规则反向佐证是否为误报，规则中有原理跟处置建议。<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046448411.png" alt="" loading="lazy"></p>
-<p>#####告警分析<br>
-#######webshell访问<br>
+<p><strong>告警分析</strong><br>
+<em><strong>webshell访问</strong></em><br>
 <strong>ASHX文件上传绕过</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646047622230.png" alt="" loading="lazy"><br>
 请求地址中存在类似绕过语句 a.ashx/b.png，响应体内容为微信跳转，且无上传数据。判断为误报。</p>
@@ -136,7 +136,7 @@
 <p><strong>whoami命令注入攻击</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646047909269.png" alt="" loading="lazy"><br>
 搜索未发现whoami命令,且请求体内容为业务相关</p>
-<p>#######PHP代码注入<br>
+<p>####### PHP代码注入<br>
 <strong>通用PHP代码注入攻击</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646048160988.png" alt="" loading="lazy"><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646048178943.png" alt="" loading="lazy"><br>
@@ -144,6 +144,31 @@
 <p><strong>发现Php Webshell popen函数</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646048245312.png" alt="" loading="lazy"><br>
 关键字需要分析上下文，图中出现一些javascript，以及引入一些URL，没有看到恶意请求。</p>
+<p><strong>2.4 Webshell上传</strong><br>
+<strong>2.4.1 通用Webshell上传攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048638494.png" alt="" loading="lazy"><br>
+请求体内容是百度贴吧图片,因此判断误报</p>
+<p><strong>2.4.2 Python Webshell上传</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048713826.png" alt="" loading="lazy"><br>
+XML请求格式,内容也没有webshell相关特征。</p>
+<p><strong>2.5 XSS攻击</strong><br>
+<strong>2.5.1 XSS 攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048794852.jpg" alt="" loading="lazy"><br>
+请求体中存在比较多的特征,需要查看是否存在不正常的语句插入,如alert(xxx)，或者其他不常见的事件（onerror,onclick...）</p>
+<p>**2.6 SQL注入 **<br>
+SQL注入常见误报为关键字误报，客户业务不规范在传输过程中有明文SQL语句。判断SQL注入需要了解常见的注入语句，以及关键函数。出现关键字后,分析上下文,是否还存在其他非正常语句,如果存在其他语句,需要针对该攻击者IP进行分析。</p>
+<p><strong>2.6.1 database函数SQL注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048858746.jpg" alt="" loading="lazy"></p>
+<p><strong>2.6.2 Select语句SQL注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048896507.jpg" alt="" loading="lazy"></p>
+<p><strong>2.6.3 AppScan探测SQL注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048927891.jpg" alt="" loading="lazy"></p>
+<p><strong>2.6.4 NULLIF函数SQL注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048954176.jpg" alt="" loading="lazy"></p>
+<p><strong>2.6.5 MySQL Kill语句SQL注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048992331.jpg" alt="" loading="lazy"></p>
+<p><strong>2.6.6 MySQL Sleep函数SQL注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049028091.jpg" alt="" loading="lazy"></p>
 
             </div>
           </article>
@@ -167,7 +192,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646048251320" class="no-responsive avatar">
+    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646049041599" class="no-responsive avatar">
     <div class="text-muted">Keep Learning</div>
     <div class="social-container">
       
