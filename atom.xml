@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://github.com/HEXING19/docs.github.io</id>
     <title>Blog</title>
-    <updated>2022-03-01T02:28:01.868Z</updated>
+    <updated>2022-03-01T02:34:00.291Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://github.com/HEXING19/docs.github.io"/>
     <link rel="self" href="https://github.com/HEXING19/docs.github.io/atom.xml"/>
@@ -121,6 +121,9 @@ SQL注入常见误报为关键字误报，客户业务不规范在传输过程�
 <strong>2.11.1 伪造域控发起DCSync请求</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049940407.jpg" alt="" loading="lazy"><br>
 DCSync请求是域控之间的行为，  客户的域控服务器被定义成终端，才会生成告警。终端跟域控进行通信为不正常情况，需要确认资产。</p>
+<p><strong>2.12 宏病毒</strong><br>
+宏病毒一般都跟微软办公软件Word、Excel相关联，遇到这种情况一般通过查询文件md5或者看文件中是否具有宏函数等来确定是否误报<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646102034038.jpg" alt="" loading="lazy"></p>
 <p><strong>3.如何利用在线检测网站协助分析安全事件</strong><br>
 常说的vt网站https://www.virustotal.com/gui/<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049994743.jpg" alt="" loading="lazy"><br>
