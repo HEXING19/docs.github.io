@@ -7,7 +7,7 @@
 <meta name="description" content="Keep Learning">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646102036442">
+<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646102198724">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -85,11 +85,11 @@
             <p class="article-meta">
               2022-02-28
               
-                <a href="https://github.com/HEXING19/docs.github.io/tag/OACgqZQQ8/" class="badge success">
+                <a href="https://github.com/HEXING19/docs.github.io/tag/OACgqZQQ8/" class="badge warning">
                   安全效果
                 </a>
               
-                <a href="https://github.com/HEXING19/docs.github.io/tag/t5LZ5XbLp/" class="badge ">
+                <a href="https://github.com/HEXING19/docs.github.io/tag/t5LZ5XbLp/" class="badge secondary">
                   态势感知
                 </a>
               
@@ -102,8 +102,27 @@
 <strong>方法总结</strong><br>
  根据SIP给出的威胁描述，寻找关键检出点，如SQL注入，查看请求中是否存在注入语句。部分不熟悉的攻击，可以在网上搜索此类攻击Payload作为参考（有些误报可以直接搜索出来是业务语句），结合请求中的上下文分析，客户正常业务通常有明显特征。<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046211679.png" alt="" loading="lazy"><br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646046240072.png" alt="" loading="lazy"><br>
-<strong>挖矿、病毒家族</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646046240072.png" alt="" loading="lazy"></p>
+<p><strong>0.如何利用在线检测网站协助分析安全事件</strong><br>
+常说的vt网站https://www.virustotal.com/gui/<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049994743.jpg" alt="" loading="lazy"><br>
+分为3大部分，文件、url跟搜索（hash值、域名、 IP地址、URL或者自己创建一个IOC情报）可以根据已经威胁信息按需使用<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050018353.png" alt="" loading="lazy"><br>
+建议优先使用search栏进行搜索，会更加全面，当态势感知报毒，在线平台检测正常时，善用图表跟RELATIONS功能，有些报毒很可能因为恶意软件<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050042946.png" alt="" loading="lazy"><br>
+比如该例子，可以在RELATIONS中找到该域名应该是绑定了恶意软件<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050066424.png" alt="" loading="lazy"><br>
+通过图表功能也可以很快找到<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050094676.jpg" alt="" loading="lazy"><br>
+微步在线（https://x.threatbook.cn）检测同理，微步在线支持IP地址、域名、url、邮箱、CVE、CNVD都在一个搜索框内检测<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050123750.jpg" alt="" loading="lazy"><br>
+其他在线检测网站<br>
+深信服（https://ti.sangfor.com.cn/analysis-platform）<br>
+友商（https://ti.qianxin.com/）<br>
+腾讯哈勃（https://habo.qq.com/）<br>
+公共dns服务记录查询（https://passivedns.mnemonic.no/）<br>
+在线数据包检测工具（https://packettotal.com/）</p>
+<p><strong>挖矿、病毒家族</strong><br>
  遇见挖矿、病毒家族，可以将IP/域名在微步,VT等威胁情报中查询确认（详见在线网站检测章节），会有部分网站未标记恶意，但是通信样本中存在恶意文件。</p>
 <p><strong>系统漏洞部分</strong><br>
  如遇见漏洞，在没有具体举证，HEX特征不了解的情况下，采取关联分析，该IP是否还存在其他恶意行为。最后仍无法判断联系研发同事分析数据包。</p>
@@ -206,26 +225,7 @@ DCSync请求是域控之间的行为，  客户的域控服务器被定义成终
 <p><strong>2.12 宏病毒</strong><br>
 宏病毒一般都跟微软办公软件Word、Excel相关联，遇到这种情况一般通过查询文件md5或者看文件中是否具有宏函数等来确定是否误报<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646102034038.jpg" alt="" loading="lazy"></p>
-<p><strong>3.如何利用在线检测网站协助分析安全事件</strong><br>
-常说的vt网站https://www.virustotal.com/gui/<br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049994743.jpg" alt="" loading="lazy"><br>
-分为3大部分，文件、url跟搜索（hash值、域名、 IP地址、URL或者自己创建一个IOC情报）可以根据已经威胁信息按需使用<br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050018353.png" alt="" loading="lazy"><br>
-建议优先使用search栏进行搜索，会更加全面，当态势感知报毒，在线平台检测正常时，善用图表跟RELATIONS功能，有些报毒很可能因为恶意软件<br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050042946.png" alt="" loading="lazy"><br>
-比如该例子，可以在RELATIONS中找到该域名应该是绑定了恶意软件<br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050066424.png" alt="" loading="lazy"><br>
-通过图表功能也可以很快找到<br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050094676.jpg" alt="" loading="lazy"><br>
-微步在线（https://x.threatbook.cn）检测同理，微步在线支持IP地址、域名、url、邮箱、CVE、CNVD都在一个搜索框内检测<br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646050123750.jpg" alt="" loading="lazy"><br>
-其他在线检测网站<br>
-深信服（https://ti.sangfor.com.cn/analysis-platform）<br>
-友商（https://ti.qianxin.com/）<br>
-腾讯哈勃（https://habo.qq.com/）<br>
-公共dns服务记录查询（https://passivedns.mnemonic.no/）<br>
-在线数据包检测工具（https://packettotal.com/）</p>
-<p><strong>4.误报漏报协助判断准备信息</strong><br>
+<p><strong>3.误报漏报协助判断准备信息</strong><br>
 需要提前收集事件详情，下载json字段，有数据包的情况下载数据包，事件IP上下文日志</p>
 
             </div>
@@ -250,7 +250,7 @@ DCSync请求是域控之间的行为，  客户的域控服务器被定义成终
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646102036442" class="no-responsive avatar">
+    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646102198724" class="no-responsive avatar">
     <div class="text-muted">Keep Learning</div>
     <div class="social-container">
       
@@ -294,7 +294,7 @@ DCSync请求是域控之间的行为，  客户的域控服务器被定义成终
     </div>
     <div class="row">
       
-        <a href="https://github.com/HEXING19/docs.github.io/tag/OACgqZQQ8/" class="badge warning">
+        <a href="https://github.com/HEXING19/docs.github.io/tag/OACgqZQQ8/" class="badge secondary">
           安全效果
         </a>
       
@@ -302,7 +302,7 @@ DCSync请求是域控之间的行为，  客户的域控服务器被定义成终
           态势感知
         </a>
       
-        <a href="https://github.com/HEXING19/docs.github.io/tag/6zQu5IwKx/" class="badge secondary">
+        <a href="https://github.com/HEXING19/docs.github.io/tag/6zQu5IwKx/" class="badge ">
           Gridea
         </a>
       
