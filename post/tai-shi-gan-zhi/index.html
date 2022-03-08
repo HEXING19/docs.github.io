@@ -7,7 +7,7 @@
 <meta name="description" content="Keep Learning">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646109190119">
+<link rel="shortcut icon" href="https://github.com/HEXING19/docs.github.io/favicon.ico?v=1646732404273">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -95,7 +95,7 @@
               
             </p>
             
-              <img src="https://github.com/HEXING19/docs.github.io/post-images/tai-shi-gan-zhi.jpg" alt="态势感知误报分析基本法">
+              <img src="https://github.com/HEXING19/docs.github.io/post-images/tai-shi-gan-zhi.png" alt="态势感知误报分析基本法">
             
             <div class="post-content">
               <p><strong>SIP误报研判方法</strong><br>
@@ -104,7 +104,7 @@
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046211679.png" alt="" loading="lazy"><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646046240072.png" alt="" loading="lazy"></p>
 <p><strong>0.如何利用在线检测网站协助分析安全事件</strong><br>
-常说的vt网站https://www.virustotal.com/gui/<br>
+常说的<a href="https://www.virustotal.com/gui/">vt网站</a><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049994743.jpg" alt="" loading="lazy"><br>
 分为3大部分，文件、url跟搜索（hash值、域名、 IP地址、URL或者自己创建一个IOC情报）可以根据已经威胁信息按需使用<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646050018353.png" alt="" loading="lazy"><br>
@@ -114,16 +114,16 @@
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646050066424.png" alt="" loading="lazy"><br>
 通过图表功能也可以很快找到<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646050094676.jpg" alt="" loading="lazy"><br>
-微步在线（https://x.threatbook.cn）检测同理，微步在线支持IP地址、域名、url、邮箱、CVE、CNVD都在一个搜索框内检测<br>
+<a href="https://x.threatbook.cn">微步在线</a>检测同理，微步在线支持IP地址、域名、url、邮箱、CVE、CNVD都在一个搜索框内检测<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646050123750.jpg" alt="" loading="lazy"><br>
 其他在线检测网站<br>
-深信服（https://ti.sangfor.com.cn/analysis-platform）<br>
-友商（https://ti.qianxin.com/）<br>
-腾讯哈勃（https://habo.qq.com/）<br>
-公共dns服务记录查询（https://passivedns.mnemonic.no/）<br>
-在线数据包检测工具（https://packettotal.com/）</p>
+<a href="https://ti.sangfor.com.cn/analysis-platform">深信服</a><br>
+<a href="https://ti.qianxin.com/">友商</a><br>
+<a href="https://habo.qq.com/">腾讯哈勃</a><br>
+<a href="https://passivedns.mnemonic.no/">公共dns服务记录查询</a><br>
+<a href="https://packettotal.com/">在线数据包检测工具</a></p>
 <p><strong>1.1挖矿、病毒家族</strong><br>
- 遇见挖矿、病毒家族，可以将IP/域名在微步,VT等威胁情报中查询确认（详见在线网站检测章节），会有部分网站未标记恶意，但是通信样本中存在恶意文件。</p>
+ 遇见挖矿、病毒家族，可以将IP/域名在微步,VT等威胁情报中查询确认（<strong>详见第零章</strong>），会有部分网站未标记恶意，但是通信样本中存在恶意文件。</p>
 <p><strong>1.2系统漏洞部分</strong><br>
  如遇见漏洞，在没有具体举证，HEX特征不了解的情况下，采取关联分析，该IP是否还存在其他恶意行为。最后仍无法判断联系研发同事分析数据包。</p>
 <p><strong>1.3web攻击利用</strong><br>
@@ -147,6 +147,30 @@
 <p><strong>IIS解析漏洞文件上传绕过</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646047682263.png" alt="" loading="lazy"><br>
 部分特征符合IIS解析漏洞文件上传，可以看到请求体中应该是多个图片文件同时上传，“；”作为分隔符。IIS解析漏洞特征“1.jpg;.asp”，因此出现误报。</p>
+<p><strong>IIS缓冲区溢出漏洞</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646719121037.png" alt="" loading="lazy"></p>
+<pre><code>RESPONSE:
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Cache-Control: private, max-age=0
+Content-Length: 385
+Content-Type: text/xml; charset=utf-8
+Server: Microsoft-IIS/7.5
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Access-Control-Allow-Methods: OPTION,POST,GET
+Access-Control-Allow-Headers: x-requested-with,content-type
+Access-Control-Allow-Origin: *
+Date: Tue, 08 Mar 2022 00:24:11 GMT
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+&lt;soap:Body&gt;&lt;GetCountWorkItem01Response xmlns=&quot;http://tempuri.org/&quot;&gt;&lt;GetCountWorkItem01Result&gt;0&lt;/GetCountWorkItem01Result&gt;&lt;/GetCountWorkItem01Response&gt;&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+</code></pre>
+<p>直接通过数据包没办法直接判断，但是一眼就可以看出直接通过CVE编号找对应的漏洞详情根据漏洞触发条件进行研判是不是误报<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646719218271.png" alt="" loading="lazy"></p>
 <p><strong>系统命令注入</strong><br>
 研判思路：系统命令注入常见于客户自身业务误报，乱码误报，同时会命中一些关键字。<br>
 查看请求头是否有异常字符插入，请求体内容是否符合正常业务。存在一部分告警中有明确的关键字 如 whoami ping之类，需要判断此请求是否是日志文件。</p>
@@ -165,7 +189,7 @@
 <p><strong>whoami命令注入攻击</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646047909269.png" alt="" loading="lazy"><br>
 搜索未发现whoami命令,且请求体内容为业务相关</p>
-<p>####### PHP代码注入<br>
+<p>PHP代码注入<br>
 <strong>通用PHP代码注入攻击</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646048160988.png" alt="" loading="lazy"><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646048178943.png" alt="" loading="lazy"><br>
@@ -189,8 +213,9 @@ XML请求格式,内容也没有webshell相关特征。</p>
 请求体中存在比较多的特征,需要查看是否存在不正常的语句插入,如alert(xxx)，或者其他不常见的事件（onerror,onclick...）</p>
 <p>**2.6 SQL注入 **<br>
 SQL注入常见误报为关键字误报，客户业务不规范在传输过程中有明文SQL语句。判断SQL注入需要了解常见的注入语句，以及关键函数。出现关键字后,分析上下文,是否还存在其他非正常语句,如果存在其他语句,需要针对该攻击者IP进行分析。</p>
-<p><strong>2.6.1 database函数SQL注入攻击</strong><br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646048858746.jpg" alt="" loading="lazy"></p>
+<p><strong>2.6.1 Joomal SQL注入攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646720926015.jpg" alt="" loading="lazy"><br>
+通过关键字updatexml跟concat联合使用手法可以判断出非误报</p>
 <p><strong>2.6.2 Select语句SQL注入攻击</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646048896507.jpg" alt="" loading="lazy"></p>
 <p><strong>2.6.3 AppScan探测SQL注入攻击</strong><br>
@@ -202,29 +227,66 @@ SQL注入常见误报为关键字误报，客户业务不规范在传输过程�
 <p><strong>2.6.6 MySQL Sleep函数SQL注入攻击</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049028091.jpg" alt="" loading="lazy"></p>
 <p><strong>2.7 TLS加密异常</strong><br>
-**2.7.1 HTTPS恶意通信 **<br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049702852.jpg" alt="" loading="lazy"><br>
-威胁情报查看网站是否恶意，若无法判断就需要看证书内容，以及攻击者IP相关行为</p>
+**2.7.1 加密挖矿 **<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646722109600.png" alt="" loading="lazy"><br>
+威胁情报查看网站是否恶意攻击者IP相关行为<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646722893065.png" alt="" loading="lazy"><br>
+微步上面没有相关情报<br>
+直接用挖矿工具连接下看会不会尝试开始挖矿<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646722926155.png" alt="" loading="lazy"><br>
+根据图片看出在尝试挖矿，说明不是误报</p>
+<p>PS：挖矿一般都基于stratum协议，包括门罗币，比特币，莱特币，加密的挖矿大多数都是门罗币，非加密挖矿根据关键字来判断，出现eth相关的基本都是以太坊</p>
 <p><strong>2.8 其他代码注入</strong><br>
 **2.8.1 空字节注入攻击 **<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049759933.gif" alt="" loading="lazy"><br>
 在乱码情况下 经常出现空字节，需要看HEX，其中有00</p>
+<p><strong>2.8.2 Weblogic默认管理后台登录</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646122278086.jpg" alt="" loading="lazy"><br>
+遇到该情况使用cookie尝试看能否直接登录，建议客户做访问控制</p>
 <p><strong>2.9 Java代码注入</strong><br>
 <strong>2.9.1 Java代码注入攻击</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049835334.gif" alt="" loading="lazy"><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049842604.gif" alt="" loading="lazy"><br>
 请求体中出现了JAVA关键字，需要结合上下文判断，一般代码注入都会存在EXEC、runtime。部分客户业务会存在相应代码，需要结合日志中心进行关联分析。</p>
 <p><strong>2.10 下载恶意文件</strong><br>
-<strong>2.10.1 下载恶意文件</strong><br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646049890142.gif" alt="" loading="lazy"><br>
 外到内，访问http://xxx/cmds.exe 且状态码0，没有响应，可以判断是误报</p>
-<p><strong>2.11 DRS命令执行</strong><br>
-<strong>2.11.1 伪造域控发起DCSync请求</strong><br>
-<img src="https://github.com/HEXING19/docs.github.io/post-images/1646049940407.jpg" alt="" loading="lazy"><br>
-DCSync请求是域控之间的行为，  客户的域控服务器被定义成终端，才会生成告警。终端跟域控进行通信为不正常情况，需要确认资产。</p>
+<p><strong>2.11 爆破攻击</strong><br>
+<strong>2.11.1LDAP爆破攻击</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646726527480.png" alt="" loading="lazy"><br>
+首先根据25秒爆破18次，不太像正常业务行为，但也不能完全判断为非误报，继续看详细信息<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646726533097.png" alt="" loading="lazy"><br>
+可以确定是非误报</p>
+<p><strong>2.11.2Web账号密码爆破</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646728513937.jpg" alt="" loading="lazy"><br>
+简单来说不是爆破，是搜狗输入法的广告推广等一些内置功能在访问搜狗的服务器，正好有参数被当成用户名和密码记录下来，属于软件的恶意推广</p>
 <p><strong>2.12 宏病毒</strong><br>
 宏病毒一般都跟微软办公软件Word、Excel相关联，遇到这种情况一般通过查询文件md5或者看文件中是否具有宏函数等来确定是否误报<br>
 <img src="https://github.com/HEXING19/docs.github.io/post-images/1646102034038.jpg" alt="" loading="lazy"></p>
+<p><strong>2.13DGA域名访问</strong><br>
+僵尸网络程序中会根据算法自动生成很多DGA域名，黑客选择其中的某个或某些注册实现僵尸主机回连<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646721189803.png" alt="" loading="lazy"><br>
+观察图片中的域名随机，并且不像人为注册使用就可以判断非误报</p>
+<p><strong>2.14远程控制工具</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646720414322.jpg" alt="" loading="lazy"><br>
+根据信息一眼就看出来这是在查看目录文件，大概率确定非误报，只是还没有办法100%确定，再看下该IP相关的其他安全日志<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646720545637.png" alt="" loading="lazy"><br>
+随便找几个来解密<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646720588445.png" alt="" loading="lazy"><br>
+基本可以确定是非误报</p>
+<p><strong>2.15 感染性病毒</strong><br>
+<strong>2.15.1 感染begseabug家族感染性病毒</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646726886427.jpg" alt="" loading="lazy"><br>
+看到解析出来IP，以及访问的域名，根据IP确认下是不是有访问其他访问流量<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646727166542.png" alt="" loading="lazy"><br>
+看到并没有其他访问流量，还需要去<strong>确认下该域名的威胁情报是不是过期</strong>，可以通过微步或者vt，咨询同时也可以确认，如果威胁情报没有过期则该终端还是存在问题，一般都是因为<strong>安装恶意软件</strong>导致</p>
+<p><strong>2.15.2 感染faedevour家族病毒</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646727616621.png" alt="" loading="lazy"><br>
+日志里面看到日志类型为<strong>感染病毒</strong>解析出来的IP为0.0.0.0，<strong>这个时候还需要多看几条日志，以及json字段，因为有些时候是因为没有解析到IP，不代表所有的dns都解析不到IP</strong><br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646727528841.png" alt="" loading="lazy"><br>
+可以看出来有解析到对应的IP，通过该IP在日志检索里面搜索看是否有其他流量<br>
+<img src="https://github.com/HEXING19/docs.github.io/post-images/1646727627835.png" alt="" loading="lazy"><br>
+发现没有其他流量，可能是因为<strong>安装恶意软件</strong>导致触发该请求</p>
 <p><strong>3.误报漏报协助判断准备信息</strong><br>
 需要提前收集事件详情，下载json字段，有数据包的情况下载数据包，事件IP上下文日志</p>
 
@@ -233,24 +295,13 @@ DCSync请求是域控之间的行为，  客户的域控服务器被定义成终
         </div>
         <div class="paper" data-aos="fade-in">
           
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://github.com/HEXING19/docs.github.io/post/hello-gridea/">
-                <h3 class="post-title">
-                  Hello Gridea
-                </h3>
-              </a>
-            </div>
-          
         </div>
         
       </div>
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646109190119" class="no-responsive avatar">
+    <img src="https://github.com/HEXING19/docs.github.io/images/avatar.png?v=1646732404273" class="no-responsive avatar">
     <div class="text-muted">Keep Learning</div>
     <div class="social-container">
       
@@ -279,12 +330,6 @@ DCSync请求是域控之间的行为，  客户的域控服务器被定义成终
             </li>
           
         
-          
-            <li>
-              <a href="https://github.com/HEXING19/docs.github.io/post/hello-gridea/">Hello Gridea</a>
-            </li>
-          
-        
       </ul>
     </div>
   </div>
@@ -294,16 +339,12 @@ DCSync请求是域控之间的行为，  客户的域控服务器被定义成终
     </div>
     <div class="row">
       
-        <a href="https://github.com/HEXING19/docs.github.io/tag/OACgqZQQ8/" class="badge secondary">
+        <a href="https://github.com/HEXING19/docs.github.io/tag/OACgqZQQ8/" class="badge warning">
           安全效果
         </a>
       
         <a href="https://github.com/HEXING19/docs.github.io/tag/t5LZ5XbLp/" class="badge secondary">
           态势感知
-        </a>
-      
-        <a href="https://github.com/HEXING19/docs.github.io/tag/6zQu5IwKx/" class="badge secondary">
-          Gridea
         </a>
       
     </div>
